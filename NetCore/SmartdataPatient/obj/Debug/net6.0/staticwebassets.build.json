@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "jwvuHPmgToQ8EZGThVctY3LnyvYbloLes2KhRz0ui1Q=",
+  "Source": "SmartdataPatient",
+  "BasePath": "_content/SmartdataPatient",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
