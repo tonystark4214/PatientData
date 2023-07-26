@@ -1,0 +1,35 @@
+<div class="container fluid mt-1">
+    <div class="col-md-4 container">
+      <h2>Add New Patient</h2>
+      <form [formGroup]="PostForm" (ngSubmit)="PostData(PostForm.value)">
+        <div class="mb-3">
+          <label class="form-label">First Name</label><span class="required">*</span>
+          <input type="text" class="form-control" formControlName="firstName" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Last Name</label><span class="required">*</span>
+          <input type="email" class="form-control" formControlName="lastName" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Email</label><span class="required">*</span>
+            <input type="email" class="form-control" formControlName="email" required>
+          </div>
+        <div class="mb-3">
+          <label class="form-label">DOB</label><span class="required">*</span>
+          <input type="date" class="form-control" formControlName="dob" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Phone Number</label><span class="required">*</span>
+            <input type="number" class="form-control" formControlName="phoneNumber" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Country</label><span class="required">*</span>
+          <select class="form-select" formControlName="country" aria-label="Default select example" required>
+            <option value="" selected="selected" disabled hidden>Open this select menu</option>
+            <option *ngFor="let el of Country.country" value="{{el.countryId}}">{{el.countryName}}</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!PostForm.valid">Save</button>  
+      </form>
+    </div>
+  </div>

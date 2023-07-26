@@ -1,0 +1,58 @@
+<div class="container fluid mt-5 mb-5 tabEmp">
+    <h2>Patient Record</h2>
+    <form class="example-form">
+        <mat-form-field class="example-full-width" color="warn">
+            <mat-icon matPrefix>search</mat-icon>
+            <input matInput placeholder="Search" class="matInputField " color="white" (keyup)="Filter($event)">
+        </mat-form-field>
+    </form>
+    <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+        <mat-text-column name="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <td mat-cell *matCellDef="let element">{{element.name}}</td>
+        </mat-text-column>
+        <ng-container matColumnDef="email">
+            <!-- sorting will only work in ngcontainer -->
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Email</th>
+            <td mat-cell *matCellDef="let element">{{element.email}}</td>
+        </ng-container>
+        <mat-text-column name="userName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> UserName</th>
+            <td mat-cell *matCellDef="let element">{{element.userName}}</td>
+        </mat-text-column>
+
+        <mat-text-column name="phoneNumber">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone Number</th>
+            <td mat-cell *matCellDef="let element">{{element.phoneNumber}}</td>
+        </mat-text-column>
+        <mat-text-column name="dob">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> DOB</th>
+            <td mat-cell *matCellDef="let element">{{element.dob | date}}</td>
+        </mat-text-column>
+        <mat-text-column name="countryName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Country</th>
+            <td mat-cell *matCellDef="let element">{{element.countryName}}</td>
+        </mat-text-column>
+        <ng-container matColumnDef="edit">
+
+            <th mat-header-cell *matHeaderCellDef>Update</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button (click)="Update(element.id)">
+                    <mat-icon color="primary">edit</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+
+            <th mat-header-cell *matHeaderCellDef>Delete</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button (click)="Delete(element)">
+                    <mat-icon color="warn">delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
+<mat-paginator #page [pageSizeOptions]="[4,dataSource.data.length]" showFirstLastButtons></mat-paginator>
